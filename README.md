@@ -1,9 +1,9 @@
 This contains setup commands in an SH file easy to use and quick to install 
 Or you may use Ctr + F to search a purticular installation to find it 
 
-**==============================================
+
 # Amazon
-==============================================**
+
 #! /bin/bash
 yum install httpd git -y
 systemctl start httpd
@@ -13,9 +13,9 @@ git clone https://github.com/Ironhack-Archive/online-clone-amazon.git
 mv online-clone-amazon/* .
 tail -f /var/log/httpd/access_log
 
-**==============================================
+
 # Ansible 
-==============================================**
+
 SETUP:
 Create 5 servers (1=ansible 2=dev 2=test)
 Connect all servers to mobaxterm
@@ -60,10 +60,9 @@ ctrl + d
 
 ssh-copy-id root@private_ip of test-2 -- > yes -- > password 
 ssh private_ip of test-2
-ctrl + d
-**==============================================
+
 # Argocd
-==============================================**
+
 #INSTALL HELM:
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
@@ -91,17 +90,17 @@ kubectl get svc argocd-server -n argocd -o json | jq --raw-output .status.loadBa
 export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d'
 echo $ARGO_PWD
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-**==============================================
+
 # Docker Compose 
-==============================================**
+
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ls /usr/local/bin/
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
-**==============================================
+
 # Grafana 
-==============================================**
+
 sudo apt-get install -y adduser libfontconfig1
 wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.7_amd64.deb
 sudo dpkg -i grafana-enterprise_9.4.7_amd64.deb
@@ -109,16 +108,16 @@ sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable grafana-server
 sudo /bin/systemctl start grafana-server
 sudo /bin/systemctl status grafana-server --no-pager
-**==============================================
+
 # Helm 
-==============================================**
+
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
 helm version
-**==============================================
+
 # Jenkins
-==============================================**
+
 #STEP-1: INSTALLING GIT JAVA-1.8.0 MAVEN 
 yum install git java-1.8.0-openjdk maven -y
 
@@ -134,9 +133,9 @@ update-alternatives --config java
 #STEP-4: RESTARTING JENKINS (when we download service it will on stopped state)
 systemctl start jenkins.service
 systemctl status jenkins.service
-**==============================================
+
 # Metric-Server
-==============================================**
+
 FOR MINIKUBE:
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 minikube addons enable metrics-server #(only for minikube)
@@ -146,17 +145,17 @@ kubectl top pods
 
 FOR KOPS:
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/high-availability-1.21+.yaml
-**==============================================
+
 # Mysql
-==============================================**
+
 wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb
 sudo dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
 percona-release setup ps80
 sudo apt install percona-server-server -y
 mysql -u root -p
-**==============================================
+
 # Node Exporter
-==============================================**
+
 wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
 tar -xf node_exporter-1.5.0.linux-amd64.tar.gz
 sudo mv node_exporter-1.5.0.linux-amd64/node_exporter  /usr/local/bin
@@ -181,9 +180,9 @@ EOF
 sudo cat /etc/systemd/system/node_exporter.service
 sudo systemctl daemon-reload  && sudo systemctl enable node_exporter
 sudo systemctl start node_exporter.service && sudo systemctl status node_exporter.service --no-pager
-**==============================================
+
 # Prometheus
-==============================================**
+
 wget https://github.com/prometheus/prometheus/releases/download/v2.43.0/prometheus-2.43.0.linux-amd64.tar.gz
 tar -xf prometheus-2.43.0.linux-amd64.tar.gz
 sudo mv prometheus-2.43.0.linux-amd64/prometheus prometheus-2.43.0.linux-amd64/promtool /usr/local/bin
@@ -241,9 +240,8 @@ sudo ls -l /etc/systemd/system/prometheus.service
 sudo systemctl daemon-reload && sudo systemctl enable prometheus
 sudo systemctl start prometheus && sudo systemctl status prometheus --no-pager
 
-**==============================================
+
 # Sonar
-==============================================**
 
 #! /bin/bash
 #Launch an instance with 9000 and t2.medium
@@ -260,17 +258,17 @@ su - sonar
 #sh /opt/sonarqube-8.9.6.50800/bin/linux/sonar.sh start
 #echo "user=admin & password=admin"
 
-**==============================================
+
 # Terraform
-==============================================**
+
 sudo yum install -y yum-utils shadow-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo yum -y install terraform
 aws configure
 
-**==============================================
+
 # Terraformer
-==============================================**
+
 
 wget https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.24/terraformer-all-linux-amd64
 chmod +x terraformer-all-linux-amd64
@@ -284,9 +282,9 @@ terraform init
 terraform plan
 terraform apply
 
-**==============================================
+
 # Terraform - Ubuntu
-==============================================**
+
 
 apt update -y
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -295,9 +293,9 @@ sudo apt update && sudo apt install terraform
 apt install awscli -y
 aws configure
 
-**==============================================
+
 # Tomcat
-==============================================**
+
 
 sudo yum install java-17-amazon-corretto -y
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz
@@ -311,9 +309,9 @@ sed -i '21d' apache-tomcat-9.0.98/webapps/manager/META-INF/context.xml
 sed -i '22d'  apache-tomcat-9.0.98/webapps/manager/META-INF/context.xml
 sh apache-tomcat-9.0.98/bin/startup.sh
 
-**==============================================
+
 # Tomcat yaml 
-==============================================**
+
 - hosts: all
   tasks:
     - name: download tomcat from dlcdn
@@ -344,9 +342,9 @@ sh apache-tomcat-9.0.98/bin/startup.sh
 
     - name: start the tomcat
       shell: nohup /root/tomcat/bin/startup.sh
-**==============================================
+
 # Ubuntu Docker
-==============================================**
+
 #!/bin/bash
 
 # Update the system
@@ -371,9 +369,9 @@ systemctl start docker
 
 # Enable Docker to start on system boot
 systemctl enable docker
-**==============================================
+
 # Ubuntu Kops
-==============================================**
+
 #vim .bashrc
 #export PATH=$PATH:/usr/local/bin/
 #source .bashrc
@@ -395,9 +393,9 @@ aws s3api put-bucket-versioning --bucket cloudanddevopsbyraham007899123.k8s.loca
 export KOPS_STATE_STORE=s3://cloudanddevopsbyraham007899123.k8s.local
 kops create cluster --name rahams.k8s.local --zones us-east-1a --master-count=1 --master-size t2.medium --node-count=2 --node-size t2.micro
 kops update cluster --name rahams.k8s.local --yes --admin
-**==============================================
+
 # Ubuntu Minikube
-==============================================**
+
 
 sudo apt update -y
 sudo apt upgrade -y
